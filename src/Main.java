@@ -134,11 +134,15 @@ public class Main {
                         }
                     }
                     break;
-
                 case 4:
+                    playlistIterator.remove();
+                    System.out.println("Song was removed from your playlist");
+                    break;
+
+                case 5:
                     printPlaylist(playlistToBePlayed);
                     break;
-                case 5:
+                case 6:
                     printMenu();
                     break;
             }
@@ -165,8 +169,9 @@ public class Main {
         System.out.println("\t 1 - To play the next song");
         System.out.println("\t 2 - To play the previous song");
         System.out.println("\t 3 - To replay the current song");
-        System.out.println("\t 4 - To print songs in a playlist");
-        System.out.println("\t 5 - To print available actions");
+        System.out.println("\t 4 - To remove the current song");
+        System.out.println("\t 5 - To print songs in a playlist");
+        System.out.println("\t 6 - To print available actions");
     }
 
 
