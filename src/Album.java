@@ -39,7 +39,7 @@ public class Album {
     // return Song if it is on a list
     // return null for validation in other methods
     private Song findSong(String songTitle){
-        for(Song toBeFound : songs){
+        for(Song toBeFound : this.songs){
             if(toBeFound.getTitle().equalsIgnoreCase(songTitle)){
                 return toBeFound;
             }
@@ -61,6 +61,20 @@ public class Album {
             return false;
         }
 
+    }
+
+    // add a song to the playlist by its track number in the album
+    public boolean addToPlaylist(int trackNo, LinkedList<Song> playlist){
+        int index = trackNo-1;
+
+
+        if((index >= 0) && (index < playlist.size())){
+            playlist.add(this.songs.get(index));
+            System.out.println("Song \"" + this.songs.get(index).getTitle() + "\" successfully added");
+            return true;
+        }
+        System.out.println("A song with this track number not found");
+        return false;
     }
 
     // check whether a particular song already exists on a playlist

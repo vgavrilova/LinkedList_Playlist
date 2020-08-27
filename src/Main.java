@@ -43,6 +43,7 @@ public class Main {
         albums.get(1).addToPlaylist("the 1", playlist);
         albums.get(1).addToPlaylist("august", playlist);
         albums.get(0).addToPlaylist("For What It's Worth", playlist);
+        albums.get(0).addToPlaylist(2, playlist);
 
 
         play(playlist);
@@ -52,6 +53,7 @@ public class Main {
     }
 
     public static void play(LinkedList<Song> playlistToBePlayed){
+        System.out.println("***********************");
         printPlaylist(playlistToBePlayed);
         int choice;
         boolean quit = false;
@@ -108,8 +110,9 @@ public class Main {
                         System.out.println("Now playing \"" + currentSong + "\"");
                     } else {
                         System.out.println("You have reached the start of this playlist");
-                        // as it is the start of the list, the pointer wasn't moved
+                        // as it is the start of the list, the pointer wasn't moved backwards
                         // that's why the boolean flag should be set to true
+
                         skippedForward = true;
                     }
                     break;
@@ -122,17 +125,22 @@ public class Main {
                     // So that the same song title is showed
                     if(!skippedForward){
                         if(playlistIterator.hasNext()){
-                            currentSong = playlistIterator.next().getTitle();
-                            System.out.println("Playing again \"" + currentSong + "\"");
+                            currentSong = playlistIterator.next().toString();
+                            System.out.println("Playing again " + currentSong );
                             skippedForward = true;
+                        } else{
+                            System.out.println("We are at the end of the list");
                         }
-                    } else if(skippedForward){
-                        if(playlistIterator.hasPrevious()){
-                            currentSong = playlistIterator.previous().getTitle();
-                            System.out.println("Playing again \"" + currentSong + "\"");
-                            skippedForward = false;
+                    } else {
+                            if(playlistIterator.hasPrevious()){
+                                currentSong = playlistIterator.previous().toString();
+                                System.out.println("Playing again " + currentSong);
+                                skippedForward = false;
+                            } else {
+                                System.out.println("We are at the start of the list");
+                            }
                         }
-                    }
+
                     break;
                 case 4:
                     playlistIterator.remove();
