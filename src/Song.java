@@ -19,6 +19,6 @@ public class Song {
 
     @Override
     public String toString() {
-        return this.title.toString() + ": " + this.duration;
+        return "\"" + this.title.toString() + "\": " + this.duration;
     }
 }

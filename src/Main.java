@@ -65,7 +65,7 @@ public class Main {
         if(playlistToBePlayed.isEmpty()){
             System.out.println("No songs found");
         } else{
-            System.out.println("Now playing \"" + playlistToBePlayed.get(0).getTitle() + "\"");
+            System.out.println("Now playing " + playlistToBePlayed.get(0).toString());
             printMenu();
         }
 
@@ -87,8 +87,8 @@ public class Main {
                         }
                     }
                     if(playlistIterator.hasNext()){
-                        currentSong = playlistIterator.next().getTitle();
-                        System.out.println("Now playing \"" + currentSong + "\"");
+                        currentSong = playlistIterator.next().toString();
+                        System.out.println("Now playing " + currentSong);
                     } else {
                         System.out.println("You have reached the end of this playlist");
                         // as it is the end of the list, the pointer wasn't moved
@@ -106,8 +106,8 @@ public class Main {
                         }
                     }
                     if(playlistIterator.hasPrevious()){
-                        currentSong = playlistIterator.previous().getTitle();
-                        System.out.println("Now playing \"" + currentSong + "\"");
+                        currentSong = playlistIterator.previous().toString();
+                        System.out.println("Now playing " + currentSong);
                     } else {
                         System.out.println("You have reached the start of this playlist");
                         // as it is the start of the list, the pointer wasn't moved backwards
@@ -143,8 +143,28 @@ public class Main {
 
                     break;
                 case 4:
-                    playlistIterator.remove();
-                    System.out.println("Song was removed from your playlist");
+                    // in order to remove the song after removing one
+                    // do next() method directly after
+                    // removing, depending on a direction of moving
+                    if(playlistToBePlayed.isEmpty()){
+                        System.out.println("No songs found");
+                    } else {
+                        playlistIterator.remove();
+                        System.out.println("Song was removed from your playlist");
+
+                        if(playlistIterator.hasNext()){
+                            currentSong = playlistIterator.next().toString();
+                            System.out.println("Now playing " + currentSong);
+                            skippedForward = true;
+                        } else if(playlistIterator.hasPrevious()){
+                            currentSong = playlistIterator.previous().toString();
+                            System.out.println("Now playing " + currentSong);
+                            skippedForward = false;
+                        } else{
+                            System.out.println("We are at the end of the list");
+                        }
+                    }
+
                     break;
 
                 case 5:
@@ -159,14 +179,19 @@ public class Main {
 
     // Print songs in a playlist
     public static void printPlaylist(LinkedList<Song> songs){
-        System.out.println("Songs found in this playlist:");
-        // create an iterator
-        ListIterator<Song> songListIterator = songs.listIterator();
+        if(songs.isEmpty()){
+            System.out.println("No songs found");
+        } else{
+            System.out.println("Songs found in this playlist:");
+            // create an iterator
+            ListIterator<Song> songListIterator = songs.listIterator();
 
-        while(songListIterator.hasNext()){
-            System.out.println("- " + songListIterator.next().getTitle());
+            while(songListIterator.hasNext()){
+                System.out.println("- " + songListIterator.next().getTitle());
+            }
+            System.out.println("***********************");
         }
-        System.out.println("***********************");
+
 
 
     }
