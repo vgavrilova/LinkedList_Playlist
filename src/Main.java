@@ -44,6 +44,8 @@ public class Main {
         albums.get(1).addToPlaylist("august", playlist);
         albums.get(0).addToPlaylist("For What It's Worth", playlist);
         albums.get(0).addToPlaylist(2, playlist);
+        albums.get(0).addToPlaylist("For What It's Worth", playlist);
+        albums.get(1).addToPlaylist(5, playlist);
 
 
         play(playlist);
@@ -70,7 +72,7 @@ public class Main {
         }
 
         while(!quit){
-            System.out.println("Enter the action of your choice -- (Type 5 to see the actions)");
+            System.out.println("\nEnter the action of your choice -- (Type 6 to see the actions)");
             choice = scan.nextInt();
 
             switch(choice){
