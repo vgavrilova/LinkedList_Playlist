@@ -11,6 +11,8 @@ the pointer will give you the value it has just jumped over. It makes the implem
 But I've found a solution which you can check in my code.
 <br>
 
+UPD: I have added an inner class SongList to the Album class in order to increase the level of encapsulation. From now on the Main method does not have a direct access to the songs being added to the album.
+
 
 Feel free to explore my tiny application where you can add some songs to the playlist, replay/remove the current song or just skip backwards/forward. 
 
