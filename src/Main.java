@@ -187,9 +187,11 @@ public class Main {
             System.out.println("Songs found in this playlist:");
             // create an iterator
             ListIterator<Song> songListIterator = songs.listIterator();
+            int index = songListIterator.nextIndex()+1;
 
             while(songListIterator.hasNext()){
-                System.out.println("- " + songListIterator.next().getTitle());
+                System.out.println(index + ". " + songListIterator.next().getTitle());
+                index++;
             }
             System.out.println("***********************");
         }
